@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>💻 Construcción de secciones cónicas en 3D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00B1E5;
+      --secondary: #00B046;
+      --accent: #F2599D;
+      --background: #EFECE6;
+      --text: #3A3A3A;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem 5rem;
+      position: relative;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    header p {
+      max-width: 1040px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.95;
+    }
+
+    .brand-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 3.5rem;
+    }
+
+    .logo-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background: #fff;
+      padding: 0.45rem 1.2rem;
+      border-radius: 0 0 26px 26px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-top: none;
+    }
+
+    .guide-logo {
+      width: 200px;
+      max-width: 70%;
+    }
+
+    .wave-divider {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    main {
+      max-width: 1040px;
+      margin: -70px auto 0;
+      padding: 0 1rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.3rem;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.3rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .grid-three section {
+      margin-bottom: 0;
+    }
+
+    .code-section img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      border: 4px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .code-section figure {
+      margin: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h3 {
+      color: var(--secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.2rem;
+    }
+
+    .steps-block h3 {
+      margin-top: 1.2rem;
+    }
+
+    .steps-block ol {
+      margin-bottom: 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    dialog {
+      border: none;
+      border-radius: 12px;
+      max-width: 640px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 1rem 4rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+
+      .brand-head {
+        margin-top: 2.5rem;
+      }
+
+      .pill {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+
+      main {
+        padding: 0 0.8rem 2rem;
+      }
+
+      section {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-notch">
+    </div>
+    <div class="brand-head">
+      <h1>💻 Construcción de secciones cónicas en 3D</h1>
+    </div>
+    <p>El estudiante diseñará con la plataforma TinkerCAD las 4 secciones cónicas: circunferencia, elipse, parábola,
+      hipérbola.</p>
+    <span class="pill">⏱️ 60 minutos</span>
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="var(--background)"
+          d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,32C1200,32,1320,32,1380,32L1440,32V80H0Z" />
+      </svg>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>🎯 Competencia</h2>
+      <p>Aplica conocimientos sobre funciones, matrices, geometría y vectores, en situaciones que promueven el
+        mejoramiento y transformación del medio natural, social y cultural de su contexto.</p>
+    </section>
+    <section>
+      <h2>📏 Estándares</h2>
+      <div>
+        <article>
+          <h3>CNB Guatemala</h3>
+          <ul>
+            <li><strong>M-C1</strong> — Utiliza formas geométricas, símbolos, signos y señales para el desarrollo de sus
+              actividades cotidianas. (Matemáticas · 5to grado)</li>
+            <li><strong>M-C2</strong> — Utiliza diferentes estrategias para representar los algoritmos y términos
+              matemáticos en su entorno cultural, familiar, escolar y comunitario. (Matemáticas · 3er grado)</li>
+            <li><strong>M-C2</strong> — Relaciona ideas y pensamientos referidos a diferentes signos y gráficas,
+              algoritmos y términos matemáticos de su entorno familiar, escolar y cultural. (Matemáticas · 2do grado)
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h3>ISTE</h3>
+          <ul>
+            <li><strong>ISTE 4a</strong> — Los estudiantes conocen y usan un proceso de diseño deliberado para generar
+              ideas, probar teorías, crear artefactos innovadores o resolver problemas auténticos. (Innovative Designer)
+            </li>
+            <li><strong>ISTE 4b</strong> — Los estudiantes seleccionan y usan herramientas digitales para planificar y
+              gestionar un proceso de diseño que considera restricciones y riesgos calculados. (Innovative Designer)
+            </li>
+            <li><strong>ISTE 3a</strong> — Los estudiantes usan estrategias de investigación efectivas para encontrar
+              recursos que apoyen sus necesidades de aprendizaje, intereses personales y actividades creativas.
+              (Knowledge Constructor)</li>
+            <li><strong>ISTE 1c</strong> — Los estudiantes usan tecnología para buscar retroalimentación que informa y
+              mejora su práctica, y para demostrar su aprendizaje de diversas maneras. (Empowered Learner)</li>
+          </ul>
+        </article>
+        <article>
+          <h3>DIGCOMP</h3>
+          <ul>
+            <li><strong>DG 3.1</strong> — Desarrollo de contenido digital (Creación de contenido digital)</li>
+            <li><strong>DG 5.3</strong> — Uso creativo de las tecnologías digitales (Resolución de problemas)</li>
+            <li><strong>DG 2.4</strong> — Colaborar a través de tecnologías digitales (Comunicación y colaboración)</li>
+            <li><strong>DG 5.1</strong> — Resolución de problemas técnicos (Resolución de problemas)</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section>
+      <h2>🧩 Integración curricular</h2>
+      <ul>
+        <li>Matemática: La guía se integra al estudio de geometría y representación gráfica, permitiendo que el
+          estudiante visualice en tres dimensiones las secciones cónicas y comprenda la relación entre formas
+          geométricas, ángulos y cortes. El uso de Tinkercad facilita la interpretación espacial de conceptos
+          matemáticos que normalmente se abordan de forma abstracta.</li>
+        <li>Computación Aplicada: El modelado en Tinkercad promueve el uso de herramientas digitales para la creación de
+          modelos geométricos, el manejo de medidas, rotaciones y alineaciones, fortaleciendo habilidades tecnológicas
+          aplicadas a la resolución de problemas académicos.</li>
+        <li>Laboratorio I: La construcción de las secciones cónicas en un entorno digital permite aplicar conocimientos
+          básicos de software en un contexto práctico, desarrollando habilidades técnicas mediante la experimentación,
+          la corrección de errores y la validación visual de los resultados.</li>
+      </ul>
+    </section>
+    <div class="grid-three">
+      <section>
+        <h2>🗣️ Vocabulario</h2>
+        <ul>
+          <li>Circunferencia</li>
+          <li>Elipse</li>
+          <li>Parábola</li>
+          <li>Hipérbola</li>
+        </ul>
+      </section>
+      <section>
+        <h2>💡 Conocimientos previos</h2>
+        <ul>
+          <li>Uso de herramientas básicas de Tinkercad.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>🧰 Materiales</h2>
+        <ul>
+          <li>Plataforma de Tinkercad.</li>
+        </ul>
+      </section>
+    </div>
+    <section>
+      <h2>🌀 Introducción</h2>
+      <p>Las <strong>secciones cónicas</strong> constituyen uno de los conjuntos de curvas más importantes de la
+        matemática y han sido estudiadas desde la antigüedad debido a su presencia constante en la naturaleza, la
+        ciencia y la tecnología. Civilizaciones antiguas ya utilizaban estas formas de manera empírica, y siglos después
+        científicos como Kepler y Galileo demostraron que fenómenos fundamentales, como el movimiento de los planetas o
+        la trayectoria de los proyectiles, pueden describirse mediante estas curvas.</p>
+      <p>Una sección cónica se obtiene al <strong>intersectar un plano con un cono</strong>, y dependiendo del ángulo y
+        la posición de dicho plano se generan distintas figuras: circunferencia, elipse, parábola e hipérbola. Estas
+        formas no solo poseen interés teórico, sino que también se aplican en arquitectura, ingeniería, diseño
+        industrial, deportes y simulaciones científicas.</p>
+      <p>En esta guía, los estudiantes explorarán estas curvas desde una perspectiva <strong>visual y
+          tridimensional</strong>, utilizando la plataforma <strong>Tinkercad</strong> para comprender cómo pequeños
+        cambios en el plano de corte producen resultados geométricos distintos. Este enfoque permite vincular la teoría
+        matemática con herramientas digitales modernas, fortaleciendo el pensamiento espacial y analítico.</p>
+    </section>
+    <section>
+      <h2>🧠 Think</h2>
+      <p>Antes de trabajar en el entorno digital, realiza una <strong>experiencia manual</strong> para comprender el
+        concepto de elipse. Utiliza dos puntos fijos y un hilo para trazar la curva, observando cómo la distancia total
+        se mantiene constante.</p>
+      <p>Posteriormente reflexiona y responde:</p>
+      <ul>
+        <li>¿Qué condiciones geométricas hacen que la curva conserve su forma?</li>
+        <li>¿Cómo influye la posición de los puntos fijos en el resultado?</li>
+        <li>¿De qué manera esta construcción manual se relaciona con el uso de planos y cortes en un modelo
+          tridimensional?</li>
+      </ul>
+      <p>Esta actividad busca que el estudiante construya un <strong>modelo mental previo</strong> antes de trasladar el
+        concepto al diseño digital.</p>
+    </section>
+    <section>
+      <h2>🔧 Make</h2>
+      <p>Los estudiantes desarrollarán un <strong>modelo tridimensional en Tinkercad</strong> que permita generar las
+        cuatro secciones cónicas mediante la intersección controlada de un cono con un sólido que actúa como plano de
+        corte.</p>
+      <p>Durante el proceso, se explicará:</p>
+      <ul>
+        <li>Qué representa el cono en el modelo</li>
+        <li>Cómo el ángulo y la posición del plano determinan la sección resultante</li>
+        <li>Por qué cada modificación genera una figura distinta</li>
+      </ul>
+      <p>El docente utilizará recursos visuales y preguntas orientadoras para verificar la comprensión de cada paso. Se
+        enfatizará que el objetivo no es únicamente obtener las figuras, sino <strong>comprender la relación entre
+          geometría, ángulos y espacio tridimensional</strong>, aplicando precisión en medidas, rotaciones y
+        alineaciones.</p>
+      <div class="steps-block">
+        <h3>Pasos</h3>
+        <ol>
+          <li>Crea un cono de 100 mm de alto, largo y profundidad.</li>
+          <li>Crea un cubo de 120 mm de ancho, 120 mm de largo y 150 mm de alto.</li>
+          <li>Selecciona ambas figuras y alínealas al centro.</li>
+          <li>Selecciona el objeto cubo y muévelo hacia abajo 20 mm.</li>
+          <li>Posiciónate en la vista frontal y gira 25 grados el objeto cubo.</li>
+          <li>Mueve el objeto cubo hacia la derecha a -25 mm.</li>
+          <li>Selecciona ambos objetos y utiliza la herramienta agrupar para crear la nueva pieza deseada.</li>
+          <li>Ve a la vista detrás; la pieza te quedará de la siguiente manera.</li>
+          <li>Posiciónate en la vista &quot;Frontal&quot;, haz una copia de la nueva pieza y desagrupa la pieza para
+            tener nuevamente el cubo y el cono.</li>
+          <li>Mueve el objeto cubo 25 mm hacia la derecha.</li>
+          <li>Selecciona ambos objetos y utiliza la herramienta agrupar para crear la nueva pieza deseada.</li>
+          <li>Para hacer la tercera pieza, repite el paso 1 al 3.</li>
+          <li>Gira 50 grados el objeto cubo.</li>
+          <li>Mueve 25 mm el objeto cubo hacia la derecha.</li>
+          <li>Ahora mueve el cubo 30 mm hacia arriba del plano de trabajo.</li>
+          <li>Selecciona ambos objetos y utiliza la herramienta agrupar para crear la nueva pieza deseada.</li>
+          <li>Haz una copia de la nueva pieza y desagrupa la pieza para tener nuevamente el cubo y el cono.</li>
+          <li>Gira 40 grados el objeto cubo.</li>
+          <li>Mueve el cubo a 80 mm de altura desde el suelo.</li>
+          <li>Selecciona ambos objetos y utiliza la herramienta “agrupar” para crear la nueva pieza deseada.</li>
+          <li>Ahora que ya tienes las 4 piezas, solamente restaría cortar los excesos del cono.</li>
+          <li>Crea una copia de la primera pieza y cambia de “sólido a hueco”.</li>
+          <li>Alinea las dos piezas y luego con la herramienta agrupar puedes realizar el corte.</li>
+          <li>Repite los mismos pasos para cortar cada una de las piezas.</li>
+        </ol>
+      </div><button class="video-button" onclick="document.getElementById('videoDialog').showModal()">🎬 Ver
+        video</button>
+    </section>
+    <section>
+      <h2>🤝 Roles de equipo</h2>
+      <article>
+        <h3>Planner</h3>
+        <p>Organiza la secuencia de actividades (definir objetivos: construir las cuatro secciones cónicas), coordina
+          accesos a Tinkercad, agenda tiempos para diseño y evaluación, registra acuerdos de grupo y asegura materiales
+          (computadoras, cuentas, impresoras). Negocia tareas y gestiona el tiempo, anticipando riesgos (falta de
+          acceso, errores técnicos).</p>
+      </article>
+
+      <article>
+        <h3>Maker</h3>
+        <p>Lidera el prototipado en Tinkercad: crea el cono, aplica planos de corte para obtener circunferencia, elipse,
+          parábola e hipérbola; ajusta medidas usando vectores y matrices, realiza pruebas, exporta/importa archivos y
+          soluciona problemas técnicos. Trabaja en equipo para iterar el modelo y validar resultados.</p>
+      </article>
+
+      <article>
+        <h3>Speaker</h3>
+        <p>Documenta y comunica el proceso: prepara la explicación de cómo cada corte genera la correspondiente sección
+          cónica, presenta evidencias (capturas, modelos), responde preguntas del público y recoge retroalimentación
+          para la mejora. Facilita la reflexión sobre el aprendizaje matemático y técnico.</p>
+      </article>
+    </section>
+
+    <section>
+      <h2>🛠️ Improve</h2>
+      <p>Profundiza en el análisis del modelo digital calculando y <strong>comparando los ángulos de rotación del plano
+          de corte</strong> necesarios para generar cada sección cónica: circunferencia, elipse, parábola e hipérbola.
+      </p>
+      <p>Justifica matemáticamente:</p>
+      <ul>
+        <li>Por qué ciertos ángulos producen curvas cerradas y otros abiertas</li>
+        <li>Cómo se relaciona el ángulo del plano con la ecuación general de cada sección</li>
+        <li>Qué diferencias observas entre el modelo teórico y el resultado digital</li>
+      </ul>
+      <p>Finalmente, documenta los valores obtenidos y reflexiona sobre la precisión del modelado como herramienta para
+        comprender conceptos matemáticos complejos.</p>
+    </section>
+  </main>
+  <dialog id="videoDialog">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LQrjQkdmmh8?si=qydNzcxjJAUikBWM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <button onclick="document.getElementById('videoDialog').close()">Cerrar</button>
+  </dialog>
+</body>
+
+</html>
