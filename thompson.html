@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>🧪 Diseño del modelo atómico de Thomson en 3D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00B1E5;
+      --secondary: #00B046;
+      --accent: #F2599D;
+      --background: #EFECE6;
+      --text: #3A3A3A;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem 5rem;
+      position: relative;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    header p {
+      max-width: 1040px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.95;
+    }
+
+    .brand-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 3.5rem;
+    }
+
+    .logo-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background: #fff;
+      padding: 0.45rem 1.2rem;
+      border-radius: 0 0 26px 26px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-top: none;
+    }
+
+    .guide-logo {
+      width: 200px;
+      max-width: 70%;
+    }
+
+    .wave-divider {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    main {
+      max-width: 1040px;
+      margin: -70px auto 0;
+      padding: 0 1rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.3rem;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.3rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .grid-three section {
+      margin-bottom: 0;
+    }
+
+    .code-section img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      border: 4px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .code-section figure {
+      margin: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h3 {
+      color: var(--secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.2rem;
+    }
+
+    .steps-block h3 {
+      margin-top: 1.2rem;
+    }
+
+    .steps-block ol {
+      margin-bottom: 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    dialog {
+      border: none;
+      border-radius: 12px;
+      max-width: 640px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 1rem 4rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+
+      .brand-head {
+        margin-top: 2.5rem;
+      }
+
+      .pill {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+
+      main {
+        padding: 0 0.8rem 2rem;
+      }
+
+      section {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-notch">
+      
+    </div>
+    <div class="brand-head">
+      <h1>🧪 Diseño del modelo atómico de Thomson en 3D</h1>
+    </div>
+    <p><strong>El estudiante creará en la plataforma Tinkercad un diseño en 3D del modelo atómico de Thomson, utilizando
+        diferentes funciones de la herramienta, como agrupar y crear objetos sólidos. A través de este proyecto, podrá
+        representar de forma visual la estructura del átomo según este modelo, fortaleciendo la comprensión de conceptos
+        científicos mediante el diseño tridimensional.</strong></p>
+    <span class="pill">⏱️ 60 minutos</span>
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="var(--background)"
+          d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,32C1200,32,1320,32,1380,32L1440,32V80H0Z" />
+      </svg>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>🎯 Competencia</h2>
+      <p>Describe los procesos físicos, químicos y biológicos de la materia y la energía, para explicar los fenómenos
+        que ocurren en su entorno.</p>
+    </section>
+    <section>
+      <h2>📏 Estándares</h2>
+      <div>
+        <article>
+          <h3>CNB Guatemala</h3>
+          <ul>
+            <li><strong>MSYN-C5</strong> — Identifica las propiedades físicas de la materia en objetos de su entorno
+              inmediato. (Medio Social y Natural · 1er grado)</li>
+            <li><strong>M-C7</strong> — Construye nuevos conocimientos a partir de nuevos modelos de la ciencia y la
+              cultura. (Matemáticas · 1er grado)</li>
+            <li><strong>M-C1</strong> — Construye patrones clasificando los elementos y determinando relaciones y
+              distancias entre cada uno de ellos (Matemáticas · 2do grado)</li>
+          </ul>
+        </article>
+        <article>
+          <h3>ISTE</h3>
+          <ul>
+            <li><strong>ISTE 4a</strong> — Los estudiantes conocen y usan un proceso de diseño deliberado para generar
+              ideas, probar teorías, crear artefactos innovadores o resolver problemas auténticos. (Innovative Designer)
+            </li>
+            <li><strong>ISTE 4b</strong> — Los estudiantes seleccionan y usan herramientas digitales para planificar y
+              gestionar un proceso de diseño que considera restricciones y riesgos calculados. (Innovative Designer)
+            </li>
+            <li><strong>ISTE 3d</strong> — Los estudiantes construyen conocimiento explorando problemas del mundo real y
+              ganan experiencia aplicando su aprendizaje en entornos auténticos. (Knowledge Constructor)</li>
+          </ul>
+        </article>
+        <article>
+          <h3>DIGCOMP</h3>
+          <ul>
+            <li><strong>DG 3.1</strong> — Desarrollo de contenido digital (Creación de contenido digital)</li>
+            <li><strong>DG 5.3</strong> — Uso creativo de las tecnologías digitales (Resolución de problemas)</li>
+            <li><strong>DG 5.2</strong> — Identificación de necesidades y respuestas tecnológicas (Resolución de
+              problemas)</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section>
+      <h2>🧩 Integración curricular</h2>
+      <ul>
+        <li>Ciencias Naturales: Explora modelos atómicos históricos (Demócrito, Dalton, Thomson, Rutherford, Bohr,
+          modelo cuántico), evolución del conocimiento científico sobre estructura de la materia, modelo atómico de
+          Thomson como &quot;budín de pasas&quot; (esfera de carga positiva con electrones embebidos), comprensión de
+          partículas subatómicas (electrones, protones), propiedades físicas de la materia a nivel atómico, neutralidad
+          eléctrica del átomo, y transición de modelos filosóficos a modelos científicos experimentales.</li>
+        <li>Física fundamental: Trabaja estructura atómica básica, cargas eléctricas positivas y negativas,
+          neutralización de cargas en el átomo, distribución espacial de electrones, concepto de esfera de materia
+          cargada positivamente, diferenciación entre modelos atómicos según descubrimientos experimentales (partículas
+          alfa en Rutherford, espectros en Bohr), y comprensión de que los átomos son la unidad fundamental de la
+          materia.</li>
+        <li>Tecnologías del Aprendizaje y la Comunicación: Desarrolla diseño asistido por computadora (CAD) mediante
+          Tinkercad, modelado 3D de formas geométricas complejas, manipulación de esferas con diferentes tamaños, uso de
+          herramientas de duplicación para eficiencia, ajuste de posiciones en tres ejes (x, y, z), cambio de
+          propiedades visuales (color) para diferenciación, agrupación de objetos para crear modelos compuestos, y
+          exportación de modelos para presentación o impresión 3D.</li>
+      </ul>
+    </section>
+    <div class="grid-three">
+      <section>
+        <h2>🗣️ Vocabulario</h2>
+        <ul>
+          <li>Átomo</li>
+          <li>Modelo atómico</li>
+          <li>Materia</li>
+          <li>Carga positiva</li>
+        </ul>
+      </section>
+      <section>
+        <h2>💡 Conocimientos previos</h2>
+        <ul>
+          <li>Herramientas básicas de Tinkercad (agrupar, desagrupar).</li>
+          <li>Propiedades de objeto (longitud, anchura, altura).</li>
+        </ul>
+      </section>
+      <section>
+        <h2>🧰 Materiales</h2>
+        <ul>
+          <li>Plataforma de Tinkercad</li>
+        </ul>
+      </section>
+    </div>
+    <section>
+      <h2>🌀 Introducción</h2>
+      <p>¿Sabes qué son los <strong>modelos atómicos</strong>? ¿Cuántos modelos de átomo existen y por qué han cambiado
+        con el tiempo? Los modelos atómicos se han desarrollado a lo largo de la historia a partir de las ideas y
+        conocimientos científicos disponibles en cada época sobre la <strong>composición de la materia</strong>.</p>
+      <p>Se conocen como <strong>modelos atómicos</strong> a las distintas <strong>representaciones gráficas</strong>
+        que buscan explicar la estructura y el comportamiento de los átomos. Estos modelos no describen el átomo tal
+        como se ve, sino que lo representan de forma conceptual para facilitar su comprensión. Desde la antigüedad,
+        filósofos y científicos intentaron explicar de qué están hechas las cosas y cómo se comporta la materia.</p>
+      <p>Entre los modelos atómicos más importantes se encuentran:</p>
+      <ul>
+        <li>El <strong>modelo de Demócrito</strong>, quien propuso que la materia estaba formada por partículas muy
+          pequeñas e indivisibles llamadas átomos.</li>
+        <li>El <strong>modelo de Dalton</strong>, primer modelo con bases científicas, que estableció que los átomos no
+          se crean ni se destruyen, solo se reorganizan en las reacciones químicas.</li>
+        <li>El <strong>modelo de Thomson</strong>, que describía al átomo como una esfera con carga positiva en la que
+          estaban incrustados los electrones, logrando un equilibrio eléctrico.</li>
+        <li>El <strong>modelo de Rutherford</strong>, que planteó que el átomo podía ser atravesado por cargas
+          eléctricas y que poseía un núcleo central.</li>
+        <li>El <strong>modelo de Bohr</strong>, que comparó el átomo con un sistema solar microscópico, donde los
+          electrones giran alrededor del núcleo.</li>
+        <li>El <strong>modelo atómico actual</strong>, desarrollado por Schrödinger y Heisenberg, basado en la mecánica
+          cuántica, donde los electrones no siguen órbitas definidas, sino que se encuentran en orbitales.</li>
+      </ul>
+      <p>Un <strong>modelo atómico</strong> permite representar la materia a escala atómica y explicar sus propiedades y
+        comportamiento. Su importancia radica en que <strong>simplifica el estudio de la materia</strong>, ya que
+        transforma ideas complejas en esquemas que facilitan la comprensión científica.</p>
+    </section>
+    <section>
+      <h2>🧠 Think</h2>
+      <p>¿Sabes cómo han <strong>evolucionado los modelos atómicos</strong> a lo largo de la historia? Observa la
+        <strong>línea de tiempo atómica</strong> presentada en la imagen y analiza cómo cada modelo surge para responder
+        preguntas que el modelo anterior no podía explicar.</p>
+      <p>Reflexiona sobre cómo los avances científicos y tecnológicos permitieron mejorar la comprensión del átomo y por
+        qué los modelos fueron cambiando con el tiempo.</p>
+    </section>
+    <section>
+      <h2>🔧 Make</h2>
+      <p>Explica a los estudiantes que diseñarán en <strong>3D el modelo atómico de Thomson</strong>, representando
+        visualmente su estructura según la propuesta de este científico.</p>
+      <p>Indica que deberán ingresar a la plataforma <strong>Tinkercad</strong> e iniciar sesión para poder crear y
+        guardar su diseño.</p>
+      <p>Lee y explica cuidadosamente cada uno de los pasos que se presentan a continuación, asegurándote de que los
+        estudiantes comprendan el uso de las herramientas necesarias. Realiza preguntas durante el proceso y resuelve
+        las dudas que surjan para garantizar que todos puedan completar el proyecto correctamente.</p>
+      <div class="steps-block">
+        <h3>Pasos</h3>
+        <ol>
+          <li>Selecciona el objeto con forma de esfera y colócalo en el área de trabajo.</li>
+          <li>Cambia el color de la esfera a naranja y agrega las siguientes medidas.</li>
+          <li>Agrega otra esfera al plano de trabajo, cambia el color a verde y agrega las siguientes medidas.</li>
+          <li>Coloca la esfera verde dentro de la esfera naranja, quedará de la siguiente manera.</li>
+          <li>Selecciona la esfera verde, aparecerá un triángulo de color rojo en la parte de arriba de la figura,
+            selecciona y mueve hacia arriba. Esto servirá para que la esfera verde no se vea dentro de la esfera
+            naranja.</li>
+          <li>Selecciona la esfera verde y da clic en la opción “duplicar” que aparece en la parte de arriba.</li>
+          <li>Repite el paso anterior hasta obtener un diseño como el siguiente (esfera naranja con múltiples esferas
+            verdes distribuidas).</li>
+        </ol>
+      </div><button class="video-button" onclick="document.getElementById('videoDialog').showModal()">🎬 Ver
+        video</button>
+    </section>
+    <section>
+      <h2>🤝 Roles de equipo</h2>
+      <article>
+        <h3>Planner</h3>
+        <p>Organiza el cronograma del proyecto, coordina el acceso a Tinkercad (cuentas, tutoriales), registra acuerdos
+          sobre metas y criterios de éxito, asigna tareas (quién modela qué) y supervisa tiempos. Usa habilidades de
+          gestión, negociación y resolución de problemas para mantener el equipo enfocado.</p>
+      </article>
+
+      <article>
+        <h3>Maker</h3>
+        <p>Realiza el prototipado en Tinkercad: crea formas, aplica funciones (agrupar, sólidos), ajusta tamaños y
+          posiciones, prueba variantes y corrige errores técnicos. Lidera el ensamblaje y las pruebas, aportando
+          pensamiento computacional y colaboración práctica.</p>
+      </article>
+
+      <article>
+        <h3>Speaker</h3>
+        <p>Documenta el proceso, prepara la explicación del modelo (conceptos científicos y decisiones de diseño),
+          presenta el trabajo al profesor y compañeros, y responde preguntas. Recoge retroalimentación y la comunica al
+          equipo para iterar mejoras.</p>
+      </article>
+    </section>
+    <section class="code-section">
+      <h2>💻 Código</h2>
+      <p></p>
+    </section>
+    <section>
+      <h2>🛠️ Improve</h2>
+      <p>Tomando en cuenta los <strong>conocimientos adquiridos en el ejercicio anterior</strong>, realiza el
+        <strong>diseño 3D del modelo atómico de Bohr</strong> en Tinkercad. Para ello, adapta lo que ya aprendiste sobre
+        la creación de objetos sólidos y el uso de herramientas como <strong>agrupar</strong> y
+        <strong>alinear</strong>, ahora aplicándolo a una estructura diferente.</p>
+      <p>En este modelo, deberás representar al átomo como un sistema organizado, donde los <strong>electrones</strong>
+        se encuentran dispuestos alrededor del núcleo, siguiendo el enfoque propuesto por Bohr. El objetivo de esta
+        mejora es que compares visualmente ambos modelos (Thomson y Bohr) y reconozcas cómo la evolución del pensamiento
+        científico se refleja en la forma en que se representa el átomo.</p>
+      <p>Esta actividad fortalece la comprensión histórica y conceptual de los modelos atómicos, al mismo tiempo que
+        consolida tus habilidades de <strong>diseño tridimensional</strong>.</p>
+    </section>
+  </main>
+  <dialog id="videoDialog">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7E-omnxMXIY?si=ziNeVNzZKNtm0Khw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <button onclick="document.getElementById('videoDialog').close()">Cerrar</button>
+  </dialog>
+</body>
+
+</html>
